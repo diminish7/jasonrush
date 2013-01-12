@@ -8,6 +8,9 @@ gem 'nokogiri'
 gem 'passenger'
 gem 'devise'
 
+gem 'execjs'
+gem 'therubyracer', '0.10.2'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
