@@ -1,0 +1,48 @@
+<div id="sidebar">
+  <div id="sidebar2">
+
+  <!-- Begin #profile-container -->
+
+  <div id="profile-container">
+    <h2 class="sidebar-title">About Me</h2>
+    <dl class="profile-datablock">
+      <dt class="profile-img">
+        <%= link_to image_tag("jason.jpg", width: "53", height: "80", alt: "My Photo"), root_path %>
+      </dt>
+      <dd class="profile-data">
+        <strong>Name:</strong>  Jason Rush
+      </dd>
+      <dd class="profile-data">
+        <strong>Location:</strong>  Louisville, CO<br/>United States
+      </dd>
+    </dl>
+    <% unless @hide_more_link %>
+      <%= link_to "More...", root_path %>
+    <% end %>
+    <!-- End #profile -->
+    <br/><br/><br/>
+
+    <% if blog.present? && next_posts.present? %>
+      <h2 class="sidebar-title">Previous Posts</h2>
+      <ul id="recently">
+        <% next_posts.each do |next_post| %>
+          <li>
+            <%= link_to next_post.title, blog_post_path(next_post, blog_id: blog) %>
+          </li>
+        <% end %>
+      </ul>
+      <h2 class="sidebar-title">Archives</h2>
+
+      <ul class="archive-list">
+        <% (hash = blog.possible_years_and_months).keys.sort.each do |year| %>
+          <% hash[year].each do |month| %>
+            <li>
+              <%= link_to pretty_month_and_year(month, year), blog_posts_path(blog, month: month, year: year) %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+      <p id="blogfeeds">Subscribe to<br>Posts [<a target="_blank" href="http://jasonrush.com/blog/atom.xml" type="application/atom+xml">Atom</a>]</p>
+    <% end %>
+  </div>
+</div>

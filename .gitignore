@@ -1,0 +1,6 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+config/*.yml
+config/deploy.rb

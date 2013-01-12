@@ -1,0 +1,34 @@
+<h2 class="date-header">
+  <%= post.created_at.strftime("%A, %B %e, %Y") %>
+</h2>
+
+<!-- Begin .post -->
+<div class="post"><a name="7841616094462024116"></a>
+  <h3 class="post-title">
+    <%= post.title %>
+  </h3>
+  <div class="post-body">
+    <%= raw(post.body) %>
+  </div>
+  <% unless post.new_record? %>
+    <p class="post-footer">
+      <em>
+        posted by <%= post.author.first_name %>
+        at <%= link_to post.created_at.strftime("%l:%M %p"), blog_post_path(post, blog_id: post.blog), title: "permanent link", class: "post-footer-link" %>
+      </em>
+      <a class="comment-link" href="<%= blog_post_path(post, blog_id: post.blog) %>">
+        <span style="text-transform:lowercase"><%= pluralize(post.comments.count, "Comments") %></span>
+      </a>
+      <% if user_signed_in? && post.can_edit?(current_user) %>
+        <span class="item-control blog-admin pid-1176500513">
+          <a style="border:none;" href="<%= edit_blog_post_path(post, blog_id: post.blog) %>" title="Edit Post">
+            <img class="icon-action" alt="" style="border:none;" src="http://www.blogger.com:80/img/icon18_edit_allbkg.gif" height="18" width="18" />
+          </a>
+        </span>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+<% if comments %>
+  <%= render partial: "comments/comments", locals: {comments: post.comments.active, commentable_type: post.class.to_s, commentable_id: post.id } %>
+<% end %>

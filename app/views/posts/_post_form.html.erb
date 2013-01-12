@@ -1,0 +1,22 @@
+<%= render partial: "shared/standard_messages", locals: { object: post } %>
+<%= form_for([blog, post]) do |f| %>
+  <%= f.hidden_field :blog_id, value: blog.id %>
+  <%= f.hidden_field :author_id, value: current_user.id %>
+  <p>
+    <%= f.label :title %>
+    <br/>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %>
+    <br/>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+    <% unless post.new_record? %>
+      <%= link_to "Delete", [blog, post], confirm: "Are you sure?", method: :delete, class: "button" %>
+    <% end %>
+  </p>
+
+<% end %>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <title><%= get_title %></title>
+    <%= yield :feeds %>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <center>
+      <div id="admin_links">
+        <% if user_signed_in? %>
+          <%= link_to "logout", destroy_user_session_path, method: :delete %>
+        <% end %>
+      </div>
+    </center>
+    <div id="header">
+      <h1 id="blog-title">
+        <%= link_to get_title(false), @blog ? blog_posts_path(blog_id: @blog) : "/" %>
+      </h1>
+      <p id="description"></p>
+    </div>
+    <!-- Begin #content -->
+    <div id="content">
+      <!-- Begin #main -->
+      <div id="main">
+        <div id="main2">
+          <%= render partial: "shared/standard_messages", locals: { object: @error_object } %>
+
+          <%= yield %>
+
+        </div>
+      </div>
+
+      <%= render partial: "shared/sidebar", locals: { next_posts: @next_posts, blog: @blog } %>
+    </div>
+
+  </body>
+</html>

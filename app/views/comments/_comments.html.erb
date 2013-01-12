@@ -1,0 +1,31 @@
+<div id="comments">
+  <h4><%= pluralize(comments.length, "Comment") %></h4>
+  <dl id="comments-block">
+    <% comments.each do |comment| %>
+      <dt class="comment-poster">
+        <a name="comment_<%= comment.id %>"></a>
+        <strong><%= comment.name_or_anonymous %></strong> said...
+      </dt>
+      <dd class="comment-body">
+        <% comment.chunks.each do |comment_chunk| %>
+          <p>
+            <%= comment_chunk %>
+          </p>
+        <% end %>
+      </dd>
+      <dd class="comment-timestamp">
+        <%= link_to comment.created_at.strftime("%B %e, %Y %l:%M %p"), url_for(here)+"#comment_#{comment.id}", title: "comment permalink" %>
+        <% if user_signed_in? && comment.can_edit?(current_user) %>
+          <span class="item-control blog-admin">
+            <a href="<%= comment_path(comment) %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow" style="border:none;" title="Delete Comment">
+              <span class='delete-comment-icon'>&nbsp;</span>
+            </a>
+          </span>
+        <% end %>
+      </dd>
+    <% end %>
+  </dl>
+</div>
+<p class="comment-timestamp">
+  <%= link_to "Post a Comment", new_comment_path(commentable_type: commentable_type, commentable_id: commentable_id)%>
+</p>

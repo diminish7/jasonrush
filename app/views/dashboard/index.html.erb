@@ -1,0 +1,28 @@
+<% content_for :feeds do %>
+  <% Blog.all.each do |blog| %>
+    <link rel="alternate" type="application/rss+xml" title="<%= 'Jason Rush: ' + blog.name.titleize %> - RSS" href="<%= rss_blog_posts_url(blog_id: blog, format: 'xml') %>" />
+  <% end %>
+<% end %>
+
+<div>
+  <h3 class="post-title">
+    About Me:
+  </h3>
+  <p>
+    Hello! You found me!
+  </p>
+  <p>
+    This is <%= link_to "jasonrush.com", root_path %>, the home of all your Jason Rush Information (JRI) needs.
+    I'm a software developer - mostly Ruby these days, but I do a bit of Android development in my free time.
+    I play guitar, write fiction, climb mountains and practice Parkour. Sort of.
+  </p>
+  <p>
+    You can <a href="mailto:jasonrush@jasonrush.com">email me</a>, find me on
+    <a href="https://twitter.com/#!/diminish7">Twitter</a>,
+    <a href="https://www.facebook.com/diminish7">Facebook</a>,
+    <a href="https://www.linkedin.com/in/jlrush">LinkedIn</a>, and
+    <a href="https://github.com/diminish7">Github</a>, and
+    or check out my blogs on
+    <%= raw(comma_delimited_blog_links) %>.
+  </p>
+</div>
