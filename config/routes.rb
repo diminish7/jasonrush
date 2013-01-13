@@ -11,7 +11,7 @@ Jasonrush::Application.routes.draw do
     end
   end
 
-  resources :comments
+  # resources :comments
   resources :users
 
   # Support old blogger path
