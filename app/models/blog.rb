@@ -19,4 +19,12 @@ class Blog < ActiveRecord::Base
       years
     end
   end
+
+  def as_simple_json
+    {
+      id: id,
+      name: name,
+      title: title
+    }
+  end
 end

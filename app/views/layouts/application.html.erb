@@ -1,39 +1,23 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr" ng-app="jasonrushApp">
   <head>
     <title><%= get_title %></title>
     <%= yield :feeds %>
     <%= stylesheet_link_tag "/stylesheets/default", media: "all" %>
+    <%= javascript_include_tag "/javascripts/vendor/angular.min.js" %>
+    <%= javascript_include_tag "/javascripts/vendor/angular-route.min.js" %>
+
+    <%= javascript_include_tag "/javascripts/app/app.js" %>
+    <%= javascript_include_tag "/javascripts/app/controllers.js" %>
+
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <center>
-      <div id="admin_links">
-        <% if user_signed_in? %>
-          <%= link_to "logout", destroy_user_session_path, method: :delete %>
-        <% end %>
-      </div>
-    </center>
     <div id="header">
-      <h1 id="blog-title">
-        <%= link_to get_title(false), @blog ? blog_posts_path(blog_id: @blog) : "/" %>
-      </h1>
-      <p id="description"></p>
+      <%= link_to image_tag('/images/header.png', alt: "Header"), root_path %>
     </div>
-    <!-- Begin #content -->
-    <div id="content">
-      <!-- Begin #main -->
-      <div id="main">
-        <div id="main2">
-          <%= render partial: "shared/standard_messages", locals: { object: @error_object } %>
-
-          <%= yield %>
-
-        </div>
-      </div>
-
-      <%= render partial: "shared/sidebar", locals: { next_posts: @next_posts, blog: @blog } %>
+    <div ng-view>
+      <%= yield %>
     </div>
-
   </body>
 </html>
