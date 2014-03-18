@@ -1,9 +1,3 @@
-<% content_for :feeds do %>
-  <% Blog.all.each do |blog| %>
-    <link rel="alternate" type="application/rss+xml" title="<%= 'Jason Rush: ' + blog.name.titleize %> - RSS" href="<%= rss_blog_posts_url(blog_id: blog, format: 'xml') %>" />
-  <% end %>
-<% end %>
-
 <p>
   Hello! You found me!
 </p>
