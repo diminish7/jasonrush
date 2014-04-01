@@ -1,0 +1,70 @@
+==================================================================
+https://keybase.io/diminish7
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://jasonrush.com
+  * I am diminish7 (https://keybase.io/diminish7) on keybase.
+  * I have a public key with fingerprint E1AF 2FE0 04F9 4968 02D7  7C53 C8A8 DB5E C50A F9B8
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "e1af2fe004f9496802d77c53c8a8db5ec50af9b8",
+            "host": "keybase.io",
+            "key_id": "C8A8DB5EC50AF9B8",
+            "uid": "14ed99f94eb2b910fe9e71b5a18ade00",
+            "username": "diminish7"
+        },
+        "service": {
+            "hostname": "jasonrush.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1395874142,
+    "expire_in": 157680000,
+    "prev": "c87db51cfca4981c6c5627c3dd58662ec67a4bd666ed8f3cfd37367d3b562011",
+    "seqno": 12,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1.4.15 (Darwin)
+
+owE1kXtQVHUUx+9CFEQri42ojTPgxUgcFu7d+15m4rFgRqM5WqE4Svfxu3cvsHv3
+cXcF16WG0tJxhGxyhtKWxtcM/mGFDyLUbSoYK9ZUZBAqkcLRkRYcmwqopd917PfP
+b37nfM73+zvntJmTkSTTb1vXycTFlHbT99E/BGQjsXlbCBU0qQm1h9B68PCSVbcC
+fB6f6tZROwpwXrbJAMNImSM5msVsEsOIFCGyPCsJFBApjJc5gUULUKfmNyqgjMD7
+QaGqwRh81KoSjDrYMrainKp0UFjZaq7c4AMPEzgJJI6D4kCwCRyOyYADDC5QPM7y
+EvQ1QD/wuXkXgLSkulS36ncyaLgAheGgKgLj04b3I6SO92tuX8DvLBQ1F6z2+DRd
+E7UGmHLqusduVOpNHgPdDoTaRyK1guqWYOewIAh8flVzo3YckqKuGqo4wVEsQ+Kk
+rQAFjR7VB2pVg6AYOBJ4DBsQhJIiy8Cx4KIs8iTH4iItUrSNEQlJoliatgGRZnhS
+kGiaBhIrE6IsEQxBMxIhQA7DcdRoy+vWoDa00nkFavpVxc3rAR9Aw3uSlj2GmJKQ
+x1OSjOUhT6ZZ/l/pWq8FeW9l+YLY4EjPZPd8dHJh3UfUeYfzYzzzmVvbxaGnu66s
+33y8veda+a2bY9RLS+4rs8pO+gn66+jZ3dv0vWpkIpnpp4uTTqyQHqRX9ubUKB6r
+vYWcKiIim3Yt/mr02/FqHlt/TrlwbyLUMtCWWW16MW+444eT0dZkNT/TZZpr7eIz
+HmDPuYZLTbOxWAU9+PobtvqRS/d7p5t468XjoQOdi9ovv6lnF5+pr0K8K/IXTVRd
+3XgvpjqGzs/Pldw1+37P/axz/7nVck7Nhrq2VUsPV8mtjX+azzhHB164vNRlydM7
+QXx3ZP5G86Eir/dXnch92z6N7Hx/x3BJ6eGr19q7Et/8U3KExT+ZsS4PdxOu5h3B
+hW+FN0i5npb+S3JxR0U8ZabvqDwZj6XdJvdqCeTo3VPpSmS/NWs+xQwyuVeb5FWK
+4++63lHnoX+LkJufp2pZY8hroex4jBx5xTk+RO9KO9XzfGxfMNxz0FG17AA+vrhU
++8k1Ta4LBNlIGT0TPUutTO+rNetb013Zw/1PJScs1sb4MUvHCTVw3Z16+udP9/XX
+zL0TvLCnpKZpYsnLc1e2FBfe7surPr0lbJYTY1oicw22KWdB98G/2j6cUjIariPF
+X2Ykfnx3ylo1n0eO3xk89t3afO2Xkx+Mz665kfUFb76zfGAWI7pTnz1S2dyQzvwH
+=kqj7
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/diminish7
+
+==================================================================
+
