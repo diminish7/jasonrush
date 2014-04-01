@@ -15,13 +15,5 @@ Jasonrush::Application.routes.draw do
     end
   end
 
-  # resources :comments
   resources :users
-
-  # Support old blogger path
-  match '/blog', to: 'blogs#blogger_index'
-  match '/blog/:year/:month/:id.:format', to: 'blogs#blogger_post'
-  # Support old blogger feeds
-  match '/blog/atom.xml', to: 'posts#rss', blog_id: 'dev'
-  match '/blog/rss.xml', to: 'posts#rss', blog_id: 'dev'
 end
