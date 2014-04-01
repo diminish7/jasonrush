@@ -8,6 +8,9 @@ class Post < ActiveRecord::Base
 
   has_friendly_id :title, use_slug: true, scope: "blog_id"
 
+  scope :recent, lambda {
+    ordered.limit(10)
+  }
   scope :for_month, lambda { |month|
     where("MONTH(created_at) = ?", month)
   }
@@ -32,5 +35,12 @@ class Post < ActiveRecord::Base
     post.updated_at = Time.zone.now
     post.body = "Uh oh! Looks like I haven't actually posted anything to this blog yet! Hopefully I'll get to it pretty soon... (Fingers crossed!)"
     post
+  end
+
+  def as_json(*attrs)
+    super(*attrs).merge(
+      author_name: author.full_name,
+      author_first_name: author.first_name
+    )
   end
 end

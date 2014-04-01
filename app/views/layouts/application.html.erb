@@ -6,11 +6,22 @@
       <link rel="alternate" type="application/rss+xml" title="<%= 'Jason Rush: ' + blog.name.titleize %> - RSS" href="<%= rss_blog_posts_url(blog_id: blog, format: 'xml') %>" />
     <% end %>
     <%= stylesheet_link_tag "/stylesheets/default", media: "all" %>
+    <%= stylesheet_link_tag "/stylesheets/post", media: "all" %>
+    <%= stylesheet_link_tag "/stylesheets/menu", media: "all" %>
+
+    <%= javascript_include_tag "/javascripts/vendor/underscore-min.js" %>
+
     <%= javascript_include_tag "/javascripts/vendor/angular.min.js" %>
     <%= javascript_include_tag "/javascripts/vendor/angular-route.min.js" %>
+    <%= javascript_include_tag "/javascripts/vendor/angular-sanitize.min.js" %>
 
     <%= javascript_include_tag "/javascripts/app/app.js" %>
-    <%= javascript_include_tag "/javascripts/app/controllers.js" %>
+    <%= javascript_include_tag "/javascripts/app/controllers/dashboard.js" %>
+    <%= javascript_include_tag "/javascripts/app/controllers/posts.js" %>
+    <%= javascript_include_tag "/javascripts/app/controllers/post.js" %>
+    <%= javascript_include_tag "/javascripts/app/controllers/menu.js" %>
+    <%= javascript_include_tag "/javascripts/app/directives/menu.js" %>
+    <%= javascript_include_tag "/javascripts/app/filters/trusted_html.js" %>
 
     <%= csrf_meta_tags %>
   </head>

@@ -1,0 +1,1 @@
+jasonrushControllers.controller('MenuController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {}]);

@@ -1,28 +1,11 @@
-<h2 class="date-header">
-  <%= post.created_at.strftime("%A, %B %e, %Y") %>
-</h2>
-
-<!-- Begin .post -->
-<div class="post"><a name="7841616094462024116"></a>
-  <h3 class="post-title">
-    <%= post.title %>
+<div class="post">
+  <h3>
+    <%= link_to post.title, blog_post_path(post, blog_id: post.blog), class: "post-title" %>
   </h3>
-  <div class="post-body">
+  <div class="byline">
+    <%= post.created_at.strftime("%b %e, %Y %l:%M %p") %> (by <%= post.author.first_name %>)
+  </div>
+  <div class="body">
     <%= raw(post.body) %>
   </div>
-  <% unless post.new_record? %>
-    <p class="post-footer">
-      <em>
-        posted by <%= post.author.first_name %>
-        at <%= link_to post.created_at.strftime("%l:%M %p"), blog_post_path(post, blog_id: post.blog), title: "permanent link", class: "post-footer-link" %>
-      </em>
-      <% if user_signed_in? && post.can_edit?(current_user) %>
-        <span class="item-control blog-admin pid-1176500513">
-          <a style="border:none;" href="<%= edit_blog_post_path(post, blog_id: post.blog) %>" title="Edit Post">
-            <img class="icon-action" alt="" style="border:none;" src="http://www.blogger.com:80/img/icon18_edit_allbkg.gif" height="18" width="18" />
-          </a>
-        </span>
-      <% end %>
-    </p>
-  <% end %>
 </div>

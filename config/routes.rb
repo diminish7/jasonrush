@@ -10,6 +10,9 @@ Jasonrush::Application.routes.draw do
         get :rss
       end
     end
+    member do
+      get :menu
+    end
   end
 
   # resources :comments

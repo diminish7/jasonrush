@@ -1,0 +1,35 @@
+<div class="<%= 'menu-bar' if is_menu_bar %>">
+  <div class="menu">
+    <h3>About Me</h3>
+    <div class="profile-info-container">
+      <p>
+        JASON RUSH
+        <br/>
+        LOUISVILLE, CO
+        <br/>
+        UNITED STATES
+      </p>
+      <p>
+        <a href="/">More...</a>
+      </p>
+    </div>
+    <a href="/" class="bordered">
+      <img src="/images/jason.jpg" alt="Jason" />
+    </a>
+    <h3>Previous Posts</h3>
+    <% blog.posts.recent.each do |post| %>
+      <div class="link-container">
+        <%= link_to post.title, blog_post_path(post, blog_id: post.blog) %>
+      </div>
+    <% end %>
+    <h3>Archives</h3>
+    <% blog.possible_months.each do |month| %>
+      <div class="link-container">
+        <%= link_to "#{month['month_name']}, #{month['year']}", blog_posts_path(blog, year: month['year'], month: month['month']) %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="menu-link">
+  <%= link_to "Menu", menu_blog_path(blog) %>
+</div>

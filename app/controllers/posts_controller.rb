@@ -12,7 +12,20 @@ class PostsController < ApplicationController
     @posts = if @month && @year
       @blog.posts.ordered.for_year(@year).for_month(@month)
     else
-      @blog.posts.ordered[0..10] if @blog
+      @blog.posts.ordered.limit(5) if @blog
+    end
+    # Fill posts with a default post if there aren't any
+    @posts = [Post.no_posts(@blog, User.find_by_email('jasonrush@jasonrush.com'))] if @posts.blank?
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          blog: @blog,
+          month: @month,
+          year: @year,
+          posts: @posts
+        }
+      end
     end
   end
 
@@ -23,6 +36,15 @@ class PostsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          blog: @blog,
+          post: @post
+        }
+      end
+    end
   end
 
   def edit

@@ -10,6 +10,20 @@ class BlogsController < ApplicationController
     redirect_to blog_posts_path(Blog.find(params[:id]))
   end
 
+  def menu
+    @blog = Blog.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          blog: @blog,
+          recent: @blog.posts.recent,
+          months: @blog.possible_months
+        }
+      end
+    end
+  end
+
   # Support links from the old blogger URLs
   def blogger_index
     flash[:notice] = "The URL has changed, please update your bookmarks"

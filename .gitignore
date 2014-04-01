@@ -5,3 +5,4 @@ tmp/**/*
 config/*.yml
 config/deploy.rb
 vendor/bundle
+TODO
