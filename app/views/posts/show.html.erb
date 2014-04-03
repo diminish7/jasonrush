@@ -1,3 +1,6 @@
+<% content_for :redirect_js do %>
+  window.location = '<%= "#{root_path}#/blogs/#{@blog.to_param}/posts/#{@post.to_param}" %>';
+<% end %>
 <%= render partial: "shared/menu", locals: { blog: @blog, is_menu_bar: true } %>
 <div class="posts">
   <%= render partial: "post", locals: { post: @post } %>

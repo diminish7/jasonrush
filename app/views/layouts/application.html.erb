@@ -9,6 +9,10 @@
     <%= stylesheet_link_tag "/stylesheets/post", media: "all" %>
     <%= stylesheet_link_tag "/stylesheets/menu", media: "all" %>
 
+    <%= javascript_tag do %>
+      <%= yield :redirect_js %>
+    <% end %>
+
     <%= javascript_include_tag "/javascripts/vendor/underscore-min.js" %>
 
     <%= javascript_include_tag "/javascripts/vendor/angular.min.js" %>
