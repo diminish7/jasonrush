@@ -1,5 +1,6 @@
 jasonrushControllers.controller('PostsController', ['$scope', '$http', '$routeParams',
   function($scope, $http, $routeParams) {
+    ga('send', 'event', 'all posts', 'view', $routeParams.blogName);
     var requestPath;
     if ($routeParams.year && $routeParams.month) {
       requestPath = '/blogs/'+$routeParams.blogName+'/posts.json?year='+$routeParams.year+'&month='+$routeParams.month;
