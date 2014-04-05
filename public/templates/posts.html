@@ -5,7 +5,7 @@
 <div class="posts">
   <div class="post" ng-repeat="post in posts">
     <h3>
-      <a href="/#/blogs/{{blog.name}}/posts/{{post.id}}" class="post-title">{{post.title}}</a>
+      <a href="/#/blogs/{{blog.name}}/posts/{{post.slug}}" class="post-title">{{post.title}}</a>
     </h3>
     <div class="byline">
       {{post.created_at | date:'MMM d, y h:mm: a'}} (by {{post.author_first_name}})

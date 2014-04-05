@@ -42,7 +42,8 @@ class Post < ActiveRecord::Base
   def as_json(*attrs)
     super(*attrs).merge(
       author_name: author.full_name,
-      author_first_name: author.first_name
+      author_first_name: author.first_name,
+      slug: to_param
     )
   end
 
