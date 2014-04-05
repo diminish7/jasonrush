@@ -6,6 +6,6 @@
     <%= post.created_at.strftime("%b %e, %Y %l:%M %p") %> (by <%= post.author.first_name %>)
   </div>
   <div class="body">
-    <%= raw(post.body) %>
+    <%= raw(summary ? post.summary : post.body) %>
   </div>
 </div>

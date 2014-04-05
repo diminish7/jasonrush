@@ -8,7 +8,7 @@ jasonrushControllers.controller('PostsController', ['$scope', '$http', '$routePa
     }
     $http.get(requestPath).success(function(data) {
       $scope.blog = data.blog;
-      $scope.posts = data.posts;
+      $scope.posts = _.map(data.posts, function(post) { post.summaryOrBody = post.summary; return post; });
     });
   }]
 );

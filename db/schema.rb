@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140403183645) do
+ActiveRecord::Schema.define(:version => 20140403190203) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20140403183645) do
     t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "summary"
   end
 
   add_index "posts", ["blog_id"], :name => "index_posts_on_blog_id"

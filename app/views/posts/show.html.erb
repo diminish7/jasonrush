@@ -3,5 +3,5 @@
 <% end %>
 <%= render partial: "shared/menu", locals: { blog: @blog, is_menu_bar: true } %>
 <div class="posts">
-  <%= render partial: "post", locals: { post: @post } %>
+  <%= render partial: "post", locals: { post: @post, summary: false } %>
 </div>
