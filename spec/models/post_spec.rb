@@ -11,6 +11,13 @@ describe Post do
     end
   end
 
+  it "saves the summary automatically" do
+    first_paragraph = "<p>first</p>"
+    second_paragraph = "<p>second</p>"
+    @post = FactoryGirl.create(:post, body: first_paragraph + second_paragraph)
+    @post.summary.should eq first_paragraph
+  end
+
   describe "named scopes" do
 
     it "should return all the posts for a year" do

@@ -20,13 +20,15 @@ describe Blog do
     @blog.posts(true) # Reload posts
   end
 
-  it "should return a hash of possible years and months" do
-    hash = @blog.possible_years_and_months
-    hash.keys.length.should == 2
+  it "should return a hash of possible months" do
+    months = @blog.possible_months
+
+    months.should have(4).months
+
     [2012, 2011].each do |year|
-      hash[year].length.should == 2
-      hash[year].select { |month| month == 12 }.length.should == 1
-      hash[year].select { |month| month == 11 }.length.should == 1
+      [11, 12].each do |month|
+        months.detect { |m| m['month'] == month && m['year'] == year }.should be_present
+      end
     end
   end
 end
