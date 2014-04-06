@@ -8,9 +8,13 @@
     <%= stylesheet_link_tag "/stylesheets/default", media: "all" %>
     <%= stylesheet_link_tag "/stylesheets/post", media: "all" %>
     <%= stylesheet_link_tag "/stylesheets/menu", media: "all" %>
+    <%= stylesheet_link_tag "/stylesheets/logout", media: "all" %>
+    <%= stylesheet_link_tag "/stylesheets/admin", media: "all" %>
 
     <%= javascript_tag do %>
       <%= yield :redirect_js %>
+      var AUTH_TOKEN = '<%= form_authenticity_token %>';
+      var UNKNOWN_ERROR = "Sorry! An unknown error occurred.";
     <% end %>
 
     <%= javascript_include_tag "/javascripts/vendor/underscore-min.js" %>
@@ -24,7 +28,11 @@
     <%= javascript_include_tag "/javascripts/app/controllers/posts.js" %>
     <%= javascript_include_tag "/javascripts/app/controllers/post.js" %>
     <%= javascript_include_tag "/javascripts/app/controllers/menu.js" %>
+    <%= javascript_include_tag "/javascripts/app/controllers/admin/login.js" %>
+
     <%= javascript_include_tag "/javascripts/app/directives/menu.js" %>
+    <%= javascript_include_tag "/javascripts/app/directives/logout.js" %>
+
     <%= javascript_include_tag "/javascripts/app/filters/trusted_html.js" %>
 
     <script>
@@ -42,6 +50,7 @@
   </head>
   <body>
     <div id="header">
+      <logout></logout>
       <%= link_to image_tag('/images/header.png', alt: "Header"), root_path %>
     </div>
     <div ng-view>

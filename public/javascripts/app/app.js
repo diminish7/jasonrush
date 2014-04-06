@@ -28,6 +28,10 @@ jasonrushApp.config(['$routeProvider',
         templateUrl: '/templates/menu-container.html',
         controller: 'MenuController'
       }).
+      when('/admin/login', {
+        templateUrl: '/templates/admin/login.html',
+        controller: 'admin.LoginController'
+      }).
       otherwise({
         redirectTo: '/'
       });

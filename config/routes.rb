@@ -15,5 +15,5 @@ Jasonrush::Application.routes.draw do
     end
   end
 
-  resources :users
+  resource :user, only: :show
 end

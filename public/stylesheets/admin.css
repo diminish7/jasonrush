@@ -1,0 +1,44 @@
+#error {
+  background-color: #FFB2B2;
+  border: 1px solid #E6A0A0;
+  color: #FF0000;
+  font-size: small;
+  width: 250px;
+  margin: 5px;
+  display: inline-block;
+}
+
+#login-container {
+  text-align: center;
+}
+
+#login {
+  display: inline-block;
+  width: 265px;
+  border: 1px solid #b5b5b5;
+}
+
+#login label {
+  display: inline-block;
+  width: 80px;
+  text-align: right;
+}
+
+#login input {
+  width: 150px;
+}
+
+#login .remember-me-container {
+  display: block;
+  text-align: right;
+  padding-right: 10px;
+}
+
+#login .remember-me-container label {
+  width: auto;
+}
+
+.button-container {
+  text-align: right;
+  padding-right: 10px;
+}

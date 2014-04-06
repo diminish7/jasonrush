@@ -1,0 +1,19 @@
+<div id="login-container">
+  <form id="login" ng-submit="submit()">
+    <div id="error" ng-show="hasError">{{errorMessage}}</div>
+    <p>
+      <label for="email">Email:</label>
+      <input type="text" name="email" id="email" autofocus ng-model="user.email" ng-focus="true" />
+    </p>
+    <p>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" ng-model="user.password" />
+    </p>
+    <p class="button-container">
+      <button>
+        <span ng-show="!submitting">Submit</span>
+        <img src="/images/spinner.gif" alt="Loading..." ng-show="submitting" />
+      </button>
+    </p>
+  </form>
+</div>
