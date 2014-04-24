@@ -1,21 +1,33 @@
+/* GENERAL ADMIN */
+
 #error {
   background-color: #FFB2B2;
   border: 1px solid #E6A0A0;
   color: #FF0000;
   font-size: small;
-  width: 250px;
+  width: 100%;
   margin: 5px;
   display: inline-block;
 }
 
-#login-container {
+.button-container {
+  text-align: right;
+  padding-right: 10px;
+}
+
+form {
+  display: inline-block;
+  border: 1px solid #b5b5b5;
+}
+#login-container, #post-form-container {
   text-align: center;
 }
 
+/* LOGIN FORM */
+
 #login {
-  display: inline-block;
   width: 265px;
-  border: 1px solid #b5b5b5;
+  padding-right: 10px;
 }
 
 #login label {
@@ -38,7 +50,39 @@
   width: auto;
 }
 
-.button-container {
-  text-align: right;
-  padding-right: 10px;
+/* POST FORM */
+#post-form {
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 20px;
+  width: 80%;
 }
+
+#post-form input {
+  width: 100%;
+}
+
+#post-form textarea {
+  width: 100%;
+  height: 300px;
+}
+/*
+<div id="post-form-container">
+  <form id="post-form" ng-submit="submit()">
+    <div id="error" ng-show="hasError">{{errorMessage}}</div>
+    <p>
+      <label for="title">Title:</label>
+      <input type="text" name="title" id="title" autofocus ng-model="post.title" />
+    </p>
+    <p>
+      <label for="post">Post:</label>
+      <textarea name="post" id="post" ng-model="post.body" />
+    </p>
+    <p class="button-container">
+      <button>
+        <span ng-show="!submitting">Submit</span>
+        <img src="/images/spinner.gif" alt="Loading..." ng-show="submitting" />
+      </button>
+    </p>
+  </form>
+</div>*/

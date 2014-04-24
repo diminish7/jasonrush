@@ -1,0 +1,21 @@
+<div id="post-form-container">
+  <form id="post-form" ng-submit="submit()">
+    <div id="error" ng-show="hasError">{{errorMessage}}</div>
+    <p>
+      <label for="title">Title:</label>
+      <br/>
+      <input type="text" name="title" id="title" autofocus ng-model="post.title" />
+    </p>
+    <p>
+      <label for="post">Post:</label>
+      <br/>
+      <textarea name="post" id="post" ng-model="post.body"></textarea>
+    </p>
+    <p class="button-container">
+      <button>
+        <span ng-show="!submitting">Submit</span>
+        <img src="/images/spinner.gif" alt="Loading..." ng-show="submitting" />
+      </button>
+    </p>
+  </form>
+</div>

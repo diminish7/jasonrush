@@ -11,6 +11,8 @@
     <%= stylesheet_link_tag "/stylesheets/logout", media: "all" %>
     <%= stylesheet_link_tag "/stylesheets/admin", media: "all" %>
 
+    <%= csrf_meta_tags %>
+
     <%= javascript_tag do %>
       <%= yield :redirect_js %>
       var AUTH_TOKEN = '<%= form_authenticity_token %>';
@@ -29,9 +31,11 @@
     <%= javascript_include_tag "/javascripts/app/controllers/post.js" %>
     <%= javascript_include_tag "/javascripts/app/controllers/menu.js" %>
     <%= javascript_include_tag "/javascripts/app/controllers/admin/login.js" %>
+    <%= javascript_include_tag "/javascripts/app/controllers/admin/new-post.js" %>
 
     <%= javascript_include_tag "/javascripts/app/directives/menu.js" %>
     <%= javascript_include_tag "/javascripts/app/directives/logout.js" %>
+    <%= javascript_include_tag "/javascripts/app/directives/new-post-link.js" %>
 
     <%= javascript_include_tag "/javascripts/app/filters/trusted_html.js" %>
 
@@ -43,10 +47,7 @@
 
       ga('create', 'UA-49717546-1', 'jasonrush.com');
       ga('send', 'pageview');
-
     </script>
-
-    <%= csrf_meta_tags %>
   </head>
   <body>
     <div id="header">

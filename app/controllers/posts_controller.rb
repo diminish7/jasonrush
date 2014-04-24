@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
   before_filter :get_support_data, only: [:index, :show]
-  before_filter :authenticate_user!, only: [:edit, :update, :new, :create, :destroy]
+  before_filter :authenticate_user!, only: [:update, :create, :destroy]
 
   respond_to :xml, only: [:rss, :atom]
+  respond_to :json, only: [:update, :create, :destroy]
 
   def index
     @blog = Blog.find(params[:blog_id], include: :posts)
@@ -28,12 +29,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def rss
-    @blog = Blog.find(params[:blog_id], include: :posts)
-    render layout: false
-    response.headers["Content-Type"] = "application/rss+xml"
-  end
-
   def show
     respond_to do |format|
       format.html
@@ -44,6 +39,19 @@ class PostsController < ApplicationController
         }
       end
     end
+  end
+
+  def create
+    blog = Blog.find(params[:blog_id])
+    post = Post.new(params[:post].merge(author: current_user, blog: blog))
+    response = post.save ? post.as_json : { error: post.errors.full_messages.join(', ') }
+    render json: response
+  end
+
+  def rss
+    @blog = Blog.find(params[:blog_id], include: :posts)
+    render layout: false
+    response.headers["Content-Type"] = "application/rss+xml"
   end
 
 protected

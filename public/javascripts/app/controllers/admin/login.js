@@ -34,7 +34,7 @@ jasonrushControllers.controller('admin.LoginController', ['$scope', '$http', '$l
       if (validate($scope.user)) {
         hideError();
         toggleSubmitting(true);
-        data = { user: $scope.user, authenticity_token: AUTH_TOKEN };
+        data = { user: $scope.user };
         $http.post('/users/sign_in.json', data).success(loginSuccess).error(loginError);
       }
     };
