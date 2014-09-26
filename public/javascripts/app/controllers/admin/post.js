@@ -1,4 +1,4 @@
-jasonrushControllers.controller('admin.NewPostController', ['$scope', '$http', '$routeParams', '$location',
+jasonrushControllers.controller('admin.PostController', ['$scope', '$http', '$routeParams', '$location',
   function($scope, $http, $routeParams, $location) {
     ///// HELPERS //////
     hideError = function() {
@@ -17,16 +17,36 @@ jasonrushControllers.controller('admin.NewPostController', ['$scope', '$http', '
 
     //// INIT //////
     toggleSubmitting(false);
-    $scope.hasError = false;
-    $scope.post = {};
+    hideError();
+    if ($routeParams.postId) {
+      $http.get('/blogs/'+$routeParams.blogName+'/posts/'+$routeParams.postId+'.json').success(function(data) {
+        data.post.summaryOrBody = data.post.body;
+        $scope.post = data.post;
+      });
+    } else {
+      $scope.post = {};
+    }
 
     $scope.submit = function() {
       toggleSubmitting(true)
-      data = { post: $scope.post };
-      $http.post('/blogs/'+$routeParams.blogName+'/posts.json', data).success(createPostSuccess).error(createPostError);
+      if ($scope.post.id) {
+        // Update
+        data = {
+          post: {
+            id: $scope.post.id,
+            title: $scope.post.title,
+            body: $scope.post.body
+          }
+        }
+        $http.put('/blogs/'+$routeParams.blogName+'/posts/' + $scope.post.id + '.json', data).success(submitSuccess).error(submitError);
+      } else {
+        // Create
+        data = { post: $scope.post };
+        $http.post('/blogs/'+$routeParams.blogName+'/posts.json', data).success(submitSuccess).error(submitError);
+      }
     };
 
-    createPostSuccess = function(data) {
+    submitSuccess = function(data) {
       if (data.error === undefined) {
         $location.path('/blogs/'+$routeParams.blogName+'/posts');
       } else {
@@ -35,7 +55,7 @@ jasonrushControllers.controller('admin.NewPostController', ['$scope', '$http', '
       toggleSubmitting(false)
     };
 
-    createPostError = function(data) {
+    submitError = function(data) {
       var error;
       if (typeof data === 'string') {
         error = (data.trim() === "") ? UNKNOWN_ERROR : data;

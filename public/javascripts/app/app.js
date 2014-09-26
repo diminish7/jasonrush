@@ -34,7 +34,11 @@ jasonrushApp.config(['$routeProvider',
       }).
       when('/admin/blogs/:blogName/posts/new', {
         templateUrl: '/templates/admin/post-form.html',
-        controller: 'admin.NewPostController'
+        controller: 'admin.PostController'
+      }).
+      when('/admin/blogs/:blogName/posts/:postId/edit', {
+        templateUrl: '/templates/admin/post-form.html',
+        controller: 'admin.PostController'
       }).
       otherwise({
         redirectTo: '/'
@@ -44,8 +48,7 @@ jasonrushApp.config(['$routeProvider',
 
 jasonrushApp.config(['$httpProvider',
   function($httpProvider) {
-    $httpProvider.defaults.headers.post['X-CSRF-Token'] = AUTH_TOKEN;
-    $httpProvider.defaults.headers.put['X-CSRF-Token'] = AUTH_TOKEN;
+    $httpProvider.defaults.headers.common['X-CSRF-Token'] = AUTH_TOKEN;
   }
 ]);
 

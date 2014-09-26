@@ -50,8 +50,9 @@ class Post < ActiveRecord::Base
 protected
   def populate_summary
     # Only want to do this if we have a body to generate the
-    # summary from, and if the summary hasn't already been generated
-    return if body.blank? || summary.present?
+    # summary from, and if the summary is already generated,
+    # only want to do this if the body changed
+    return if body.blank? || (summary.present? && !body_changed?)
     doc = Nokogiri::HTML::DocumentFragment.parse(body)
     self.summary = if doc.children.length == 1
       doc.to_html

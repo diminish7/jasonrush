@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_filter :get_support_data, only: [:index, :show]
+  before_filter :get_support_data, only: [:index, :show, :update, :destroy]
   before_filter :authenticate_user!, only: [:update, :create, :destroy]
+  # TODO: Authorize user as well: do they have permissions to update/create/destroy this particular post/blog?
 
   respond_to :xml, only: [:rss, :atom]
   respond_to :json, only: [:update, :create, :destroy]
@@ -44,8 +45,17 @@ class PostsController < ApplicationController
   def create
     blog = Blog.find(params[:blog_id])
     post = Post.new(params[:post].merge(author: current_user, blog: blog))
-    response = post.save ? post.as_json : { error: post.errors.full_messages.join(', ') }
-    render json: response
+    render json: post.save ? post.as_json : { error: post.errors.full_messages.join(', ') }
+  end
+
+  def update
+    # TODO: Authorize updater == original author
+    render json: @post.update_attributes(params[:post]) ? @post.as_json : { error: @post.errors.full_messages.join(', ') }
+  end
+
+  def destroy
+    # TODO: Authorize deleter == original author
+    render json: @post.destroy ? @post.as_json : { error: "Unable to destroy this post" }
   end
 
   def rss
