@@ -21,6 +21,10 @@ a.bordered {
   padding-bottom: 5px;
 }
 
+.menu-header-link {
+  color: black;
+}
+
 @media (min-width: 624px) {
   .menu {
     width: 30%;

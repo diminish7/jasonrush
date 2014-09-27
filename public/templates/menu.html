@@ -16,7 +16,7 @@
   <a href="/" class="bordered">
     <img src="/images/jason.jpg" alt="Jason" />
   </a>
-  <h3>Previous Posts</h3>
+  <h3><a href="/#/blogs/{{blog.name}}/posts" class="menu-header-link">Previous {{blog.name | capitalize}} Posts</a></h3>
   <div class="link-container" ng-repeat="post in recent">
     <a href="/#/blogs/{{blog.name}}/posts/{{post.slug}}">{{post.title}}</a>
   </div>
