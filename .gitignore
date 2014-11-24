@@ -5,5 +5,6 @@ log/*.log
 tmp/**/*
 config/*.yml
 config/deploy.rb
+config/secret_token
 vendor/bundle
 TODO
