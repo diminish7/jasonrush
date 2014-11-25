@@ -75,6 +75,8 @@ GEM
       rack
       rake (>= 0.8.1)
     polyglot (0.3.4)
+    pundit (0.3.0)
+      activesupport (>= 3.0.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -143,6 +145,7 @@ DEPENDENCIES
   mysql2
   nokogiri
   passenger
+  pundit
   rails (= 3.2.17)
   rspec
   rspec-rails

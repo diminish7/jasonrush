@@ -1,50 +1,42 @@
 require 'spec_helper'
 
 describe Post do
-  it "should validate the presence of title, body and author" do
-    @post = FactoryGirl.create(:post)
+  subject { FactoryGirl.create(:post) }
+
+  it "validates presence of title, body and author" do
     [:title, :body, :author].each do |getter|
       setter = "#{getter}="
-      @post.send(setter, nil)
-      @post.should_not be_valid
-      @post.errors[getter].include?("can't be blank").should be_true
+      subject.send(setter, nil)
+      subject.should_not be_valid
+      expect(subject.errors[getter]).to include("can't be blank")
     end
   end
 
   it "saves the summary automatically" do
     first_paragraph = "<p>first</p>"
     second_paragraph = "<p>second</p>"
-    @post = FactoryGirl.create(:post, body: first_paragraph + second_paragraph)
-    @post.summary.should eq first_paragraph
+    subject.update_attributes(body: first_paragraph + second_paragraph)
+    expect(subject.summary).to eq first_paragraph
   end
 
-  describe "named scopes" do
+  describe "#for_year" do
+    let!(:this_year_post) { FactoryGirl.create(:post).tap { |p| p.update_attribute(:created_at, Time.zone.now) } }
+    let!(:last_year_post) { FactoryGirl.create(:post).tap { |p| p.update_attribute(:created_at, Time.zone.now-1.year) } }
+    let!(:previous_year_post) { FactoryGirl.create(:post).tap { |p| p.update_attribute(:created_at, Time.zone.now-2.years) } }
 
-    it "should return all the posts for a year" do
+    it "returns all the posts for a year" do
       current_year = Time.zone.now.year
-      posts = (0..2).collect do |i|
-        post = FactoryGirl.create(:post)
-        post.update_attribute(:created_at, Time.zone.now-i.years)
-      end
-      current = Post.for_year(current_year)
-      current.count.should == 1
-      current.first.created_at.year.should == current_year
-      last_year = Post.for_year(current_year-1)
-      last_year.count.should == 1
-      last_year.first.created_at.year.should == current_year-1
-      previous_year = Post.for_year(current_year-2)
-      previous_year.count.should == 1
-      previous_year.first.created_at.year.should == current_year-2
+      current_year_posts = Post.for_year(current_year)
+      expect(current_year_posts).to have(1).post
+      expect(current_year_posts).to include(this_year_post)
+
+      last_year_posts = Post.for_year(current_year-1)
+      expect(last_year_posts).to have(1).post
+      expect(last_year_posts).to include(last_year_post)
+
+      previous_year_posts = Post.for_year(current_year-2)
+      expect(previous_year_posts).to have(1).post
+      expect(previous_year_posts).to include(previous_year_post)
     end
   end
-
-  describe "permissions" do
-    it "should return false from can_edit? unless the user can edit" do
-      post = FactoryGirl.create :post
-      user = FactoryGirl.create :user
-      post.can_edit?(user).should be_false
-      post.can_edit?(post.author).should be_true
-    end
-  end
-
 end

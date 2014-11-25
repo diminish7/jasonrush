@@ -1,17 +1,19 @@
 class BlogsController < ApplicationController
   before_filter :authenticate_user!, only: [:edit, :update, :new, :create, :delete]
 
-  # List all blogs
   def index
     @blogs = Blog.all
   end
 
   def show
-    redirect_to blog_posts_path(Blog.find(params[:id]))
+    @blog = Blog.find(params[:id])
+    authorize @blog
+    redirect_to blog_posts_path(@blog)
   end
 
   def menu
     @blog = Blog.find(params[:id])
+    authorize @blog, :show?
     respond_to do |format|
       format.html
       format.json do

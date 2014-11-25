@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_filter :get_support_data, only: [:index, :show, :update, :destroy]
   before_filter :authenticate_user!, only: [:update, :create, :destroy]
-  # TODO: Authorize user as well: do they have permissions to update/create/destroy this particular post/blog?
 
   respond_to :xml, only: [:rss, :atom]
   respond_to :json, only: [:update, :create, :destroy]
@@ -31,6 +30,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    authorize @post
     respond_to do |format|
       format.html
       format.json do
@@ -45,16 +45,17 @@ class PostsController < ApplicationController
   def create
     blog = Blog.find(params[:blog_id])
     post = Post.new(params[:post].merge(author: current_user, blog: blog))
+    authorize post
     render json: post.save ? post.as_json : { error: post.errors.full_messages.join(', ') }
   end
 
   def update
-    # TODO: Authorize updater == original author
+    authorize @post
     render json: @post.update_attributes(params[:post]) ? @post.as_json : { error: @post.errors.full_messages.join(', ') }
   end
 
   def destroy
-    # TODO: Authorize deleter == original author
+    authorize @post
     render json: @post.destroy ? @post.as_json : { error: "Unable to destroy this post" }
   end
 
@@ -67,7 +68,6 @@ class PostsController < ApplicationController
 protected
   def get_support_data
     @blog = Blog.find(params[:blog_id], include: :posts)
-    @post = Post.find(params[:id], include: :blog) if params[:id]
-    raise "'#{@post.title}' does not belong to the blog '#{@blog.name}'" unless @post.nil? || @blog.posts.include?(@post)
+    @post = @blog.posts.find(params[:id], include: :blog) if params[:id]
   end
 end
