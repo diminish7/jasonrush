@@ -23,7 +23,7 @@ class PostsController < ApplicationController
           blog: @blog,
           month: @month,
           year: @year,
-          posts: @posts
+          posts: @posts.map { |p| p.as_json_for_author(current_user) }
         }
       end
     end
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
       format.json do
         render json: {
           blog: @blog,
-          post: @post
+          post: @post.as_json_for_author(current_user)
         }
       end
     end

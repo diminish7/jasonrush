@@ -23,10 +23,6 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :title, :body, :author
 
-  def can_edit?(user)
-    user.is_a?(User) && self.author == user
-  end
-
   # Create a default post about how there are no posts
   def self.no_posts(blog, author)
     post = Post.new
@@ -45,6 +41,10 @@ class Post < ActiveRecord::Base
       author_first_name: author.first_name,
       slug: to_param
     )
+  end
+
+  def as_json_for_author(author)
+    as_json.merge(policy: PostPolicy.new(author, self).as_json)
   end
 
 protected

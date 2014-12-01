@@ -34,6 +34,18 @@ class ApplicationPolicy
     false
   end
 
+  def as_json
+    {
+      index?: index?,
+      show?: show?,
+      create?: create?,
+      new?: new?,
+      update?: update?,
+      edit?: edit?,
+      destroy?: destroy?
+    }
+  end
+
   def scope
     Pundit.policy_scope!(user, record.class)
   end
