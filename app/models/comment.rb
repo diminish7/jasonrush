@@ -7,10 +7,6 @@ class Comment < ActiveRecord::Base
 
   scope :active, lambda { where("active = ?", true) }
 
-  def can_edit?(user)
-    self.commentable.can_edit?(user) rescue false
-  end
-
   def name_or_anonymous
     self.name.blank? ? "Anonymous" : self.name
   end

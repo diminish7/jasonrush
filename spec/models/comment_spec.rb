@@ -11,15 +11,6 @@ describe Comment do
     end
   end
 
-  describe "permissions" do
-    it "should return false from can_edit? unless the user can edit" do
-      comment = FactoryGirl.create :comment
-      user = FactoryGirl.create :user
-      comment.can_edit?(user).should be_false
-      comment.can_edit?(comment.commentable.author).should be_true
-    end
-  end
-
   describe "helpers" do
     it "should return 'Anonymous' from name_or_anonymous if there is no name" do
       comment = FactoryGirl.create :comment
