@@ -40,7 +40,7 @@ jasonrushControllers.controller('admin.LoginController', ['$scope', '$http', '$l
     };
 
     loginSuccess = function(data) {
-      jasonrushApp.loggedIn = true;
+      jasonrushApp.login(data.email, data.authentication_token)
       toggleSubmitting(false);
       jasonrushApp.user = data;
       $location.path('/');
@@ -55,6 +55,7 @@ jasonrushControllers.controller('admin.LoginController', ['$scope', '$http', '$l
       } else {
         error = data.error;
       }
+      jasonrushApp.logout()
       displayError(error);
       toggleSubmitting(false);
     };

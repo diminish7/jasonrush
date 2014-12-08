@@ -7,6 +7,7 @@ gem "friendly_id", "~> 3.0"
 gem 'nokogiri'
 gem 'passenger'
 gem 'devise'
+gem 'simple_token_authentication', '~> 1.0'
 gem 'pundit'
 
 gem 'execjs'

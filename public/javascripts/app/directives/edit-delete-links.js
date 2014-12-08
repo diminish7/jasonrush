@@ -9,10 +9,12 @@ jasonrushApp.directive('editDeleteLinks', function() {
     controller: ['$scope', '$http', '$location', '$routeParams',
       function($scope, $http, $location, $routeParams) {
         $scope.blogName = $routeParams.blogName;
-        $scope.$watch(function() { return jasonrushApp.loggedIn; }, function(newVal) { $scope.loggedIn = newVal; });
+        $scope.$watch(function() { return jasonrushApp.loggedIn(); }, function(newVal) { $scope.loggedIn = newVal; });
 
         $scope.deletePost = function(post) {
-          $http.delete('/blogs/'+$routeParams.blogName+'/posts/' + $scope.post.id + '.json').success(deleteSuccess).error(deleteError);
+          url = '/blogs/'+$routeParams.blogName+'/posts/' + $scope.post.id + '.json';
+          config = jasonrushApp.authConfig();
+          $http.delete(url, config).success(deleteSuccess).error(deleteError);
         };
 
         deleteSuccess = function(data) {

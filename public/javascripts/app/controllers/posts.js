@@ -7,7 +7,8 @@ jasonrushControllers.controller('PostsController', ['$scope', '$http', '$routePa
     } else {
       requestPath = '/blogs/'+$routeParams.blogName+'/posts.json';
     }
-    $http.get(requestPath).success(function(data) {
+    config = jasonrushApp.authConfig();
+    $http.get(requestPath, config).success(function(data) {
       $scope.blog = data.blog;
       $scope.posts = _.map(data.posts, function(post) { post.summaryOrBody = post.summary; return post; });
     });

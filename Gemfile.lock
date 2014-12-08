@@ -118,6 +118,10 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    simple_token_authentication (1.7.0)
+      actionmailer (>= 3.2.6, < 5)
+      actionpack (>= 3.2.6, < 5)
+      devise (~> 3.2)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -149,3 +153,4 @@ DEPENDENCIES
   rails (= 3.2.17)
   rspec
   rspec-rails
+  simple_token_authentication (~> 1.0)

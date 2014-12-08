@@ -28,9 +28,11 @@ jasonrushControllers.controller('admin.PostController', ['$scope', '$http', '$ro
     }
 
     $scope.submit = function() {
-      toggleSubmitting(true)
+      toggleSubmitting(true);
+      config = jasonrushApp.authConfig();
       if ($scope.post.id) {
         // Update
+        url = '/blogs/'+$routeParams.blogName+'/posts/' + $scope.post.id + '.json';
         data = {
           post: {
             id: $scope.post.id,
@@ -38,11 +40,12 @@ jasonrushControllers.controller('admin.PostController', ['$scope', '$http', '$ro
             body: $scope.post.body
           }
         }
-        $http.put('/blogs/'+$routeParams.blogName+'/posts/' + $scope.post.id + '.json', data).success(submitSuccess).error(submitError);
+        $http.put(url, data, config).success(submitSuccess).error(submitError);
       } else {
         // Create
+        url = '/blogs/'+$routeParams.blogName+'/posts.json';
         data = { post: $scope.post };
-        $http.post('/blogs/'+$routeParams.blogName+'/posts.json', data).success(submitSuccess).error(submitError);
+        $http.post(url, data, config).success(submitSuccess).error(submitError);
       }
     };
 

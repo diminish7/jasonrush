@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :get_support_data, only: [:index, :show, :update, :destroy]
-  before_filter :authenticate_user!, only: [:update, :create, :destroy]
+  before_filter :authenticate_user!, only: [:edit, :update, :new, :create, :destroy]
 
   respond_to :xml, only: [:rss, :atom]
   respond_to :json, only: [:update, :create, :destroy]

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit
-  protect_from_forgery with: :exception
+  acts_as_token_authentication_handler_for User, fallback_to_devise: false
+
   respond_to :html, :json
 
   rescue_from Exception, with: :general_error

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  acts_as_token_authenticatable
+
   devise :database_authenticatable, :rememberable, :validatable
 
   # Setup accessible (or protected) attributes for your model

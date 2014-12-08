@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141125190505) do
+ActiveRecord::Schema.define(:version => 20141202190931) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
@@ -65,13 +65,16 @@ ActiveRecord::Schema.define(:version => 20141125190505) do
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "users", :force => true do |t|
-    t.string   "first_name",          :limit => 100
-    t.string   "last_name",           :limit => 100
-    t.string   "email",               :limit => 100
+    t.string   "first_name",           :limit => 100
+    t.string   "last_name",            :limit => 100
+    t.string   "email",                :limit => 100
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password",                 :default => "", :null => false
+    t.string   "encrypted_password",                  :default => "", :null => false
     t.datetime "remember_created_at"
+    t.string   "authentication_token"
   end
+
+  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token"
 
 end
