@@ -6,15 +6,13 @@ jasonrushApp.directive('editDeleteLinks', function() {
       posts: '='
     },
     templateUrl: '/templates/edit-delete-links.html',
-    controller: ['$scope', '$http', '$location', '$routeParams',
-      function($scope, $http, $location, $routeParams) {
+    controller: ['$scope', '$location', '$routeParams', 'PostService',
+      function($scope, $location, $routeParams, PostService) {
         $scope.blogName = $routeParams.blogName;
         $scope.$watch(function() { return jasonrushApp.loggedIn(); }, function(newVal) { $scope.loggedIn = newVal; });
 
         $scope.deletePost = function(post) {
-          url = '/blogs/'+$routeParams.blogName+'/posts/' + $scope.post.id + '.json';
-          config = jasonrushApp.authConfig();
-          $http.delete(url, config).success(deleteSuccess).error(deleteError);
+          PostService.delete($routeParams.blogName, $scope.post.id).success(deleteSuccess).error(deleteError);
         };
 
         deleteSuccess = function(data) {

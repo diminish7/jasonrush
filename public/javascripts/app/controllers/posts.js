@@ -1,16 +1,17 @@
-jasonrushControllers.controller('PostsController', ['$scope', '$http', '$routeParams',
-  function($scope, $http, $routeParams) {
+jasonrushControllers.controller('PostsController', ['$scope', '$routeParams', 'PostService',
+  function($scope, $routeParams, PostService) {
+    var blogName = $routeParams.blogName;
+    var year = $routeParams.year;
+    var month = $routeParams.month;
+
     ga('send', 'event', 'all posts', 'view', $routeParams.blogName);
-    var requestPath;
-    if ($routeParams.year && $routeParams.month) {
-      requestPath = '/blogs/'+$routeParams.blogName+'/posts.json?year='+$routeParams.year+'&month='+$routeParams.month;
-    } else {
-      requestPath = '/blogs/'+$routeParams.blogName+'/posts.json';
-    }
-    config = jasonrushApp.authConfig();
-    $http.get(requestPath, config).success(function(data) {
+
+    PostService.getList(blogName, year, month).success(function(data) {
       $scope.blog = data.blog;
-      $scope.posts = _.map(data.posts, function(post) { post.summaryOrBody = post.summary; return post; });
+      $scope.posts = _.map(data.posts, function(post) {
+        post.summaryOrBody = post.summary;
+        return post;
+      });
     });
   }]
 );

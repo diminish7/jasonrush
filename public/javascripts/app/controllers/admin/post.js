@@ -1,5 +1,5 @@
-jasonrushControllers.controller('admin.PostController', ['$scope', '$http', '$routeParams', '$location',
-  function($scope, $http, $routeParams, $location) {
+jasonrushControllers.controller('admin.PostController', ['$scope', '$routeParams', '$location', 'PostService',
+  function($scope, $routeParams, $location, PostService) {
     ///// HELPERS //////
     hideError = function() {
       $scope.hasError = false;
@@ -18,8 +18,9 @@ jasonrushControllers.controller('admin.PostController', ['$scope', '$http', '$ro
     //// INIT //////
     toggleSubmitting(false);
     hideError();
+
     if ($routeParams.postId) {
-      $http.get('/blogs/'+$routeParams.blogName+'/posts/'+$routeParams.postId+'.json').success(function(data) {
+      PostService.get($routeParams.blogName, $routeParams.postId).success(function(data) {
         data.post.summaryOrBody = data.post.body;
         $scope.post = data.post;
       });
@@ -29,10 +30,9 @@ jasonrushControllers.controller('admin.PostController', ['$scope', '$http', '$ro
 
     $scope.submit = function() {
       toggleSubmitting(true);
-      config = jasonrushApp.authConfig();
+      var data;
       if ($scope.post.id) {
         // Update
-        url = '/blogs/'+$routeParams.blogName+'/posts/' + $scope.post.id + '.json';
         data = {
           post: {
             id: $scope.post.id,
@@ -40,12 +40,13 @@ jasonrushControllers.controller('admin.PostController', ['$scope', '$http', '$ro
             body: $scope.post.body
           }
         }
-        $http.put(url, data, config).success(submitSuccess).error(submitError);
+        PostService.put($routeParams.blogName, $scope.post.id, data).
+          success(submitSuccess).
+          error(submitError);
       } else {
         // Create
-        url = '/blogs/'+$routeParams.blogName+'/posts.json';
         data = { post: $scope.post };
-        $http.post(url, data, config).success(submitSuccess).error(submitError);
+        PostService.post($routeParams.blogName, data).success(submitSuccess).error(submitError);
       }
     };
 

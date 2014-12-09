@@ -2,7 +2,8 @@ var jasonrushApp = angular.module('jasonrushApp', [
   'ngRoute',
   'ngSanitize',
   'jasonrushControllers',
-  'jasonrushFilters'
+  'jasonrushFilters',
+  'jasonrushServices'
 ]);
 
 jasonrushApp.config(['$routeProvider',
@@ -72,3 +73,4 @@ jasonrushApp.authConfig = function() {
 
 var jasonrushControllers = angular.module('jasonrushControllers', []);
 var jasonrushFilters = angular.module('jasonrushFilters', []);
+var jasonrushServices = angular.module('jasonrushServices', []);
