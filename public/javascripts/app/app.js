@@ -1,6 +1,7 @@
 var jasonrushApp = angular.module('jasonrushApp', [
   'ngRoute',
   'ngSanitize',
+  'ui.tinymce',
   'jasonrushControllers',
   'jasonrushFilters',
   'jasonrushServices'
