@@ -30,9 +30,6 @@ a img {
 }
 
 @media (max-width: 623px) {
-  #header img {
-    width: 100%;
-  }
   .footer .dev-logo {
     width: 30%;
   }

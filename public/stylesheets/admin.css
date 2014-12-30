@@ -50,6 +50,15 @@ form {
   width: auto;
 }
 
+#login-container .login-header-link {
+  text-align: center;
+  padding-bottom: 30px
+}
+
+.login-header-link img {
+  width: 335px;
+}
+
 /* POST FORM */
 #post-form {
   text-align: left;

@@ -1,5 +1,11 @@
+<div id="menu-header-container">
+  <header></header>
+</div>
 <div class="menu">
   <new-post-link></new-post-link>
+  <span class="menu-logout-link-container">
+    <logout></logout>
+  </span>
   <h3>About Me</h3>
   <div class="profile-info-container">
     <p>
@@ -16,7 +22,7 @@
   <a href="/" class="bordered">
     <img src="/images/jason.jpg" alt="Jason" />
   </a>
-  <h3><a href="/#/blogs/{{blog.name}}/posts" class="menu-header-link">Previous {{blog.name | capitalize}} Posts</a></h3>
+  <h3>Previous {{blog.name | capitalize}} Posts</h3>
   <div class="link-container" ng-repeat="post in recent">
     <a href="/#/blogs/{{blog.name}}/posts/{{post.slug}}">{{post.title}}</a>
   </div>

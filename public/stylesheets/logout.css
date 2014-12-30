@@ -1,5 +1,20 @@
+.header-logout-link-container {
+  text-align: right;
+}
+
 #logout-link {
-  float: right;
   font-size: small;
   padding-right: 10px;
+}
+
+@media (max-width: 623px) {
+  .header-logout-link-container {
+    display: none;
+  }
+}
+
+@media (min-width: 624px) {
+  .menu-logout-link-container {
+    display: none;
+  }
 }

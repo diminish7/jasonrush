@@ -6,6 +6,7 @@
       <link rel="alternate" type="application/rss+xml" title="<%= 'Jason Rush: ' + blog.name.titleize %> - RSS" href="<%= rss_blog_posts_url(blog_id: blog, format: 'xml') %>" />
     <% end %>
     <%= stylesheet_link_tag "/stylesheets/default", media: "all" %>
+    <%= stylesheet_link_tag "/stylesheets/header", media: "all" %>
     <%= stylesheet_link_tag "/stylesheets/post", media: "all" %>
     <%= stylesheet_link_tag "/stylesheets/menu", media: "all" %>
     <%= stylesheet_link_tag "/stylesheets/logout", media: "all" %>
@@ -38,6 +39,7 @@
 
     <%= javascript_include_tag "/javascripts/app/directives/menu.js" %>
     <%= javascript_include_tag "/javascripts/app/directives/logout.js" %>
+    <%= javascript_include_tag "/javascripts/app/directives/header.js" %>
     <%= javascript_include_tag "/javascripts/app/directives/new-post-link.js" %>
     <%= javascript_include_tag "/javascripts/app/directives/edit-delete-links.js" %>
 
@@ -57,10 +59,6 @@
     </script>
   </head>
   <body>
-    <div id="header">
-      <logout></logout>
-      <%= link_to image_tag('/images/header.png', alt: "Header"), root_path %>
-    </div>
     <div ng-view>
       <%= yield %>
     </div>
