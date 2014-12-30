@@ -1,22 +1,25 @@
-<header></header>
-<p>
-  Hello! You found me!
-</p>
-<p>
-  This is jasonrush.com, the home of all your Jason Rush Information (JRI) needs.
-  I'm a software developer - mostly Ruby these days, but I do a bit of Android development in my free time.
-  I play guitar, write fiction, climb mountains and practice Parkour. Sort of.
-</p>
-<p>
-  You can <a href="mailto:jasonrush@jasonrush.com">email me</a>, find me on
-  <a href="https://twitter.com/#!/diminish7">Twitter</a>,
-  <a href="https://www.facebook.com/diminish7">Facebook</a>,
-  <a href="https://www.linkedin.com/in/jlrush">LinkedIn</a>, and
-  <a href="https://github.com/diminish7">Github</a>, and
-  or check out my blogs:
-</p>
-<p class="footer">
-  <a href="/#/blogs/{{blog.name}}/posts" ng-repeat="blog in blogs">
-    <img src="/images/{{blog.name}}.png" alt="{{blog.title}}" class="{{blog.name}}-logo" />
-  </a>
-</p>
+<div class="dashboard">
+  <header class="dashboard-header"></header>
+  <p>
+    Hello! You found me!
+  </p>
+  <p>
+    This is jasonrush.com, the home of all your Jason Rush Information (JRI) needs.
+    I'm a software developer - mostly Ruby these days, but I do a bit of Android development in my free time.
+    I play guitar, write fiction, climb mountains and practice Parkour. Sort of.
+  </p>
+  <p>
+    You can <a href="mailto:jasonrush@jasonrush.com">email me</a>, find me on
+    <a href="https://twitter.com/#!/diminish7">Twitter</a>,
+    <a href="https://www.facebook.com/diminish7">Facebook</a>,
+    <a href="https://www.linkedin.com/in/jlrush">LinkedIn</a>, and
+    <a href="https://github.com/diminish7">Github</a>, and
+    or check out my blogs:
+  </p>
+  <p class="footer">
+    <a href="/#/blogs/{{blog.name}}/posts" ng-repeat="blog in blogs">
+      <img src="/images/{{blog.name}}.png" alt="{{blog.title}}" class="{{blog.name}}-logo" />
+    </a>
+  </p>
+  <div id="login-link-container"><a href="/#/admin/login">login</a></div>
+</div>

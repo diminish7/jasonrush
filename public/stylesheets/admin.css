@@ -75,23 +75,3 @@ form {
   width: 100%;
   height: 300px;
 }
-/*
-<div id="post-form-container">
-  <form id="post-form" ng-submit="submit()">
-    <div id="error" ng-show="hasError">{{errorMessage}}</div>
-    <p>
-      <label for="title">Title:</label>
-      <input type="text" name="title" id="title" autofocus ng-model="post.title" />
-    </p>
-    <p>
-      <label for="post">Post:</label>
-      <textarea name="post" id="post" ng-model="post.body" />
-    </p>
-    <p class="button-container">
-      <button>
-        <span ng-show="!submitting">Submit</span>
-        <img src="/images/spinner.gif" alt="Loading..." ng-show="submitting" />
-      </button>
-    </p>
-  </form>
-</div>*/

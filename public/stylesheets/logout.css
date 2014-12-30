@@ -2,9 +2,18 @@
   text-align: right;
 }
 
+.menu-logout-link-container {
+  float: right;
+}
+
 #logout-link {
   font-size: small;
   padding-right: 10px;
+}
+
+.dashboard-header .header-logout-link-container {
+  display: inline;
+  float: right;
 }
 
 @media (max-width: 623px) {
