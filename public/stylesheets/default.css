@@ -29,22 +29,6 @@ a img {
   text-align: center;
 }
 
-#login-link-container {
-  font-size: small;
-}
-
-.dashboard #login-link-container {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-.menu #login-link-container {
-  /*text-align: right;*/
-  padding-top: 75px;
-  padding-bottom: 20px;
-}
-
 @media (max-width: 623px) {
   .footer .dev-logo {
     width: 30%;

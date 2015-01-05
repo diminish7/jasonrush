@@ -55,10 +55,6 @@ form {
   padding-bottom: 30px
 }
 
-.login-header-link img {
-  width: 335px;
-}
-
 /* POST FORM */
 #post-form {
   text-align: left;
@@ -74,4 +70,16 @@ form {
 #post-form textarea {
   width: 100%;
   height: 300px;
+}
+
+@media (min-width: 341px) {
+  .login-header-link img {
+    width: 335px;
+  }
+}
+
+@media (max-width: 350px) {
+  .login-header-link img {
+    width: 100%;
+  }
 }
