@@ -8,7 +8,7 @@ jasonrushApp.directive('header', function() {
           $scope.headerImage = "/images/header-straight.png";
           $scope.showSubMenu = true;
         } else {
-          $scope.headerImage = "/images/header.png";
+          $scope.headerImage = "/images/header-pic.png";
           $scope.showSubMenu = false;
         }
       }
