@@ -3,11 +3,13 @@
 <div class="posts">
   <div class="post" ng-repeat="post in posts" ng-hide="post.isDeleted">
     <edit-delete-links post="post" posts="posts"></edit-delete-links>
-    <h3>
-      <a href="/#/blogs/{{blog.name}}/posts/{{post.slug}}" class="post-title">{{post.title}}</a>
-    </h3>
-    <div class="byline">
-      {{post.created_at | date:'MMM d, y h:mm: a'}} (by {{post.author_first_name}})
+    <div class="header">
+      <div class="title">
+        <a href="/#/blogs/{{blog.name}}/posts/{{post.slug}}">{{post.title}}</a>
+      </div>
+      <div class="byline">
+        {{post.created_at | date:'MMM d, y h:mm: a'}} (by {{post.author_first_name}})
+      </div>
     </div>
     <div class="body" ng-bind-html="post.summaryOrBody" >
       {{post.summaryOrBody | trustedHtml}}
