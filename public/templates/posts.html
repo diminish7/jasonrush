@@ -7,9 +7,9 @@
       <div class="title">
         <a href="/#/blogs/{{blog.name}}/posts/{{post.slug}}">{{post.title}}</a>
       </div>
-      <div class="byline">
-        {{post.created_at | date:'MMM d, y h:mm: a'}} (by {{post.author_first_name}})
-      </div>
+    </div>
+    <div class="byline">
+      {{post.created_at | date:'MMM d, y h:mm: a'}} (by {{post.author_first_name}})
     </div>
     <div class="body" ng-bind-html="post.summaryOrBody" >
       {{post.summaryOrBody | trustedHtml}}

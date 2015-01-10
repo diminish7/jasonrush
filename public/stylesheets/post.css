@@ -24,12 +24,6 @@ div.post div.header div.title a:hover {
   text-decoration: underline;
 }
 
-div.post div.header div.byline {
-  font-style: italic;
-  float: right;
-  padding: 10px 4px;
-}
-
 div.post div.body {
   background: url(/images/post-bg.png);
   padding: 0 10px 0 10px;
