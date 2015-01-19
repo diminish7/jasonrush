@@ -24,9 +24,9 @@ a img {
   border: 0 none;
 }
 
-#header, .footer {
+#header, p.footer {
   width: 100%;
-  text-align: center;
+  text-align: center !important;
 }
 
 @media (max-width: 623px) {
