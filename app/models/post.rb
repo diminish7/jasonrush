@@ -31,7 +31,7 @@ class Post < ActiveRecord::Base
     post.title = "Nothing to See Here!"
     post.created_at = Time.zone.now
     post.updated_at = Time.zone.now
-    post.body = "Uh oh! Looks like I haven't actually posted anything to this blog yet! Hopefully I'll get to it pretty soon... (Fingers crossed!)"
+    post.body = post.summary = "<p>Uh oh! Looks like I haven't actually posted anything to this blog yet! Hopefully I'll get to it pretty soon... (Fingers crossed!)</p>"
     post
   end
 
