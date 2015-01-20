@@ -3,7 +3,7 @@ class CleanPosts < ActiveRecord::Migration
     Post.all.each do |post|
       doc = Nokogiri::HTML::DocumentFragment.parse(post.body)
       clean_node(doc)
-      post.update_attribute(:body, doc.to_html)
+      post.update_column(:body, doc.to_html)
     end
   end
 
