@@ -26,7 +26,16 @@ a img {
 
 #header, p.footer {
   width: 100%;
-  text-align: center !important;
+  text-align: center;
+}
+
+.dashboard {
+  text-align: center;
+}
+
+.dashboard .content p {
+  display: inline-block;
+  text-align: left;
 }
 
 @media (max-width: 623px) {
@@ -35,5 +44,17 @@ a img {
   }
   .footer .writing-logo {
     width: 60%;
+  }
+}
+
+@media (min-width: 921px) {
+  .dashboard .content p {
+    width: 900px;
+  }
+}
+
+@media (max-width: 920px) {
+  .dashboard .content p {
+    width: 95%;
   }
 }

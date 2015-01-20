@@ -1,13 +1,3 @@
-div.dashboard {
-  text-align: center;
-}
-
-div.dashboard p {
-  display: inline-block;
-  text-align: left;
-  width: 60%;
-}
-
 .sub-menu .link-container {
   display: inline-block;
 }
