@@ -28,6 +28,12 @@ jasonrushControllers.controller('admin.PostController', ['$scope', '$routeParams
       $scope.post = {};
     }
 
+    $scope.tinymceOptions = {
+      selector: "textarea",
+      plugins: "link anchor",
+      toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    };
+
     $scope.submit = function() {
       toggleSubmitting(true);
       var data;
