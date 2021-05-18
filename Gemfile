@@ -4,7 +4,7 @@ gem 'rails', '3.2.17'
 
 gem 'mysql2', '0.3.15'
 gem 'friendly_id', '3.3.3.0'
-gem 'nokogiri', '1.5.6'
+gem 'nokogiri', '1.11.4'
 gem 'passenger', '3.0.19'
 gem 'devise', '3.2.4'
 gem 'simple_token_authentication', '1.7.0'
