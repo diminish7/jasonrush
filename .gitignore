@@ -1,10 +1,18 @@
 .bundle
 *.DS_Store
-db/*.sqlite3
 log/*.log
 tmp/**/*
-config/*.yml
 config/deploy.rb
 config/secret_token
 vendor/bundle
 TODO
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
