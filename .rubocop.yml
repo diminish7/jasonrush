@@ -11,3 +11,9 @@ AllCops:
     - 'db/schema.rb'
     - 'node_modules/**/*'
     - '.git/**/*'
+
+Style/Documentation:
+  Exclude:
+    - 'app/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
