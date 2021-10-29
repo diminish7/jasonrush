@@ -1,9 +1,12 @@
 .bundle
 *.DS_Store
+.byebug_history
+
 log/*.log
 tmp/**/*
 config/deploy.rb
 config/secret_token
+spec/examples.txt
 vendor/bundle
 TODO
 

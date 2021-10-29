@@ -1,0 +1,14 @@
+<div class="site-header">
+  <%= link_to root_path do %>
+    <%= image_tag 'header-pic.png', alt: t('site.title'), class: 'header-big' %>
+    <%= image_tag 'header-straight.png', alt: t('site.title'), class: 'header-small' %>
+  <% end %>
+</div>
+<div class="card">
+  <div class="header">
+    <div class="title"><%= t('.about') %></div>
+  </div>
+  <div class="body">
+    <%= t('.blurb_html') %>
+  </div>
+</div>
