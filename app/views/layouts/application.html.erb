@@ -1,68 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr" ng-app="jasonrushApp">
+<!DOCTYPE html>
+<html>
   <head>
-    <title><%= get_title %></title>
-    <% Blog.all.each do |blog| %>
-      <link rel="alternate" type="application/rss+xml" title="<%= 'Jason Rush: ' + blog.name.titleize %> - RSS" href="<%= rss_blog_posts_url(blog_id: blog, format: 'xml') %>" />
-    <% end %>
-    <%= stylesheet_link_tag "/stylesheets/default", media: "all" %>
-    <%= stylesheet_link_tag "/stylesheets/header", media: "all" %>
-    <%= stylesheet_link_tag "/stylesheets/post", media: "all" %>
-    <%= stylesheet_link_tag "/stylesheets/menu", media: "all" %>
-    <%= stylesheet_link_tag "/stylesheets/logout", media: "all" %>
-    <%= stylesheet_link_tag "/stylesheets/admin", media: "all" %>
-
+    <title><%= t('site.title') %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-
-    <%= javascript_tag do %>
-      <%= yield :redirect_js %>
-      var UNKNOWN_ERROR = "Sorry! An unknown error occurred.";
-    <% end %>
-
-    <%= javascript_include_tag "/javascripts/vendor/underscore-min.js" %>
-
-    <%= javascript_include_tag "/javascripts/vendor/angular.min.js" %>
-    <%= javascript_include_tag "/javascripts/vendor/angular-route.min.js" %>
-    <%= javascript_include_tag "/javascripts/vendor/angular-sanitize.min.js" %>
-
-    <%= javascript_include_tag "/javascripts/vendor/tinymce/tinymce.min.js" %>
-    <%= javascript_include_tag "/javascripts/vendor/ui-tinymce/tinymce.js" %>
-
-    <%= javascript_include_tag "/javascripts/app/app.js" %>
-
-    <%= javascript_include_tag "/javascripts/app/controllers/dashboard.js" %>
-    <%= javascript_include_tag "/javascripts/app/controllers/posts.js" %>
-    <%= javascript_include_tag "/javascripts/app/controllers/post.js" %>
-    <%= javascript_include_tag "/javascripts/app/controllers/menu.js" %>
-    <%= javascript_include_tag "/javascripts/app/controllers/admin/login.js" %>
-    <%= javascript_include_tag "/javascripts/app/controllers/admin/post.js" %>
-
-    <%= javascript_include_tag "/javascripts/app/directives/menu.js" %>
-    <%= javascript_include_tag "/javascripts/app/directives/logout.js" %>
-    <%= javascript_include_tag "/javascripts/app/directives/header.js" %>
-    <%= javascript_include_tag "/javascripts/app/directives/new-post-link.js" %>
-    <%= javascript_include_tag "/javascripts/app/directives/edit-delete-links.js" %>
-
-    <%= javascript_include_tag "/javascripts/app/filters/trusted-html.js" %>
-    <%= javascript_include_tag "/javascripts/app/filters/capitalize.js" %>
-
-    <%= javascript_include_tag "/javascripts/app/services/post-service.js" %>
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-49717546-1', 'jasonrush.com');
-      ga('send', 'pageview');
-    </script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-    <div ng-view>
-      <%= yield %>
-    </div>
+
+  <body class="<%= [controller_name.dasherize, action_name.dasherize].join('-') %>">
+    <%= yield %>
   </body>
 </html>

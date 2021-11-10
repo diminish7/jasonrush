@@ -1,0 +1,35 @@
+body.home-index {
+  text-align: center;
+
+  background-image: image-url('home-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+  background-color: #7B7A8A;
+}
+
+div.site-header {
+  margin: 1rem auto 2rem auto;
+
+  img.header-big { display: inline-block; }
+
+  img.header-small { display: none; }
+}
+
+
+@media (max-width: 759px) {
+  body.home-index {
+    background-size: auto;
+  }
+
+  div.site-header {
+    margin: 1rem auto;
+
+    img.header-big { display: none; }
+
+    img.header-small {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}

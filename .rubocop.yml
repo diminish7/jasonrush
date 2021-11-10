@@ -1,0 +1,19 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rake
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - '.git/**/*'
+
+Style/Documentation:
+  Exclude:
+    - 'app/**/*'
+    - 'config/**/*'
+    - 'db/**/*'

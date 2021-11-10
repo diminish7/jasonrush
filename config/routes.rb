@@ -1,19 +1,7 @@
-Jasonrush::Application.routes.draw do
-  devise_for :users
+# frozen_string_literal: true
 
-  root to: "dashboard#index"
-  match '/index.json', to: 'dashboard#index', defaults: { format: 'json' }
+Rails.application.routes.draw do
+  root to: 'home#index'
 
-  resources :blogs do
-    resources :posts do
-      collection do
-        get :rss
-      end
-    end
-    member do
-      get :menu
-    end
-  end
-
-  resource :user, only: :show
+  resources :home, only: :index
 end
