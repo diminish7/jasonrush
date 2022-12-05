@@ -1,11 +1,7 @@
 body.home-index {
   text-align: center;
-
-  background-image: image-url('home-background.jpg');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: 100% auto;
-  background-color: #7B7A8A;
+  background: #FFF;
+  background: linear-gradient(90deg, #FFF 0%, #AEC5C9 100%);
 }
 
 div.site-header {
