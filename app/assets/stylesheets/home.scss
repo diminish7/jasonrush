@@ -2,30 +2,39 @@ body.home-index {
   text-align: center;
   background: #FFF;
   background: linear-gradient(90deg, #FFF 0%, #AEC5C9 100%);
+
+  div.card {
+    div.body {
+      p {
+        margin: 1.17rem 0;
+      }
+    }
+  }
+
+  div.site-header {
+    margin: 1rem auto 2rem auto;
+
+    img.header-big { display: inline-block; }
+
+    img.header-small { display: none; }
+  }
 }
 
-div.site-header {
-  margin: 1rem auto 2rem auto;
-
-  img.header-big { display: inline-block; }
-
-  img.header-small { display: none; }
-}
 
 
 @media (max-width: 759px) {
   body.home-index {
     background-size: auto;
-  }
 
-  div.site-header {
-    margin: 1rem auto;
+    div.site-header {
+      margin: 1rem auto;
 
-    img.header-big { display: none; }
+      img.header-big { display: none; }
 
-    img.header-small {
-      display: inline-block;
-      width: 100%;
+      img.header-small {
+        display: inline-block;
+        width: 100%;
+      }
     }
   }
 }
